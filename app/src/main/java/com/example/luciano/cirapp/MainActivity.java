@@ -1,10 +1,9 @@
 package com.example.luciano.cirapp;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,4 +18,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(cadastroUsuario);
     }
 
+    public void btnCadAnuncio(View view) {
+        Intent intent = new Intent(this, CadastroAnuncioActivity.class);
+        startActivity(intent);
+    }
 }
