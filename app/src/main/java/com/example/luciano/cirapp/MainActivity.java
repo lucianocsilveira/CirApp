@@ -18,11 +18,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(cadastroUsuario);
     }
 
-    public void btnCadAnuncio(View view) {
-        Intent intent = new Intent(this, CadastroAnuncioActivity.class);
-        startActivity(intent);
-    }
-
     public void login (View view){
         Intent irParaLlista = new Intent(this,ListaDeItens.class);
         startActivity(irParaLlista);

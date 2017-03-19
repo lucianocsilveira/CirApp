@@ -1,9 +1,15 @@
 package com.example.luciano.cirapp;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+
+/**
+ * Quando um dos anúncios for clicado, esta activity deve decidir
+ * se chama "Detalhes do Anúncio" caso seja um visitante ou
+ * "EditarAnuncio, se for o autor o usuário em ação
+ */
 
 public class ListaDeItens extends AppCompatActivity {
 
@@ -13,5 +19,10 @@ public class ListaDeItens extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_de_itens);
 
+    }
+
+    public void btnNovoAnuncio(View view){
+        Intent novoAnuncio = new Intent(this, CadastroAnuncioActivity.class);
+        startActivity(novoAnuncio);
     }
 }
