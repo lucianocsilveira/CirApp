@@ -5,6 +5,13 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_dialog_map"
+        android:onClick="abreMapa"/>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -27,9 +34,8 @@
 
         <ImageView
             android:id="@+id/ivNovoAnuncio"
-            android:layout_width="46dp"
+            android:layout_width="45dp"
             android:layout_height="37dp"
-            android:layout_weight="1"
             android:onClick="btnNovoAnuncio"
             app:srcCompat="@android:drawable/ic_input_add" />
     </LinearLayout>

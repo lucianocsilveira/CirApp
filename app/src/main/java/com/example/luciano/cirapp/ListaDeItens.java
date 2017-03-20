@@ -25,4 +25,9 @@ public class ListaDeItens extends AppCompatActivity {
         Intent novoAnuncio = new Intent(this, CadastroAnuncioActivity.class);
         startActivity(novoAnuncio);
     }
+
+    public void abreMapa(View view){
+        Intent abreMapa = new Intent(this, MapsActivity.class);
+        startActivity(abreMapa);
+    }
 }
