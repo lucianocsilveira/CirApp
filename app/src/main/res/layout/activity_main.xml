@@ -77,24 +77,24 @@
         app:layout_constraintVertical_bias="0.002" />
 
     <TextView
-        android:id="@+id/txvCadastro"
+        android:id="@+id/tvCadastroUsr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="cadastrarUsuario"
         android:text="Cadastro"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtForget"
-        app:layout_constraintVertical_bias="0.652"
-        android:onClick="cadastrarUsuario"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvEsqueceSenha"
+        app:layout_constraintVertical_bias="0.652" />
 
     <CheckBox
         android:id="@+id/checkConect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Permanecer Conectdo"
-        app:layout_constraintBottom_toTopOf="@+id/txtForget"
+        app:layout_constraintBottom_toTopOf="@+id/tvEsqueceSenha"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
@@ -102,15 +102,15 @@
         android:layout_marginTop="8dp" />
 
     <TextView
-        android:id="@+id/txtForget"
+        android:id="@+id/tvEsqueceSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recuperar senha"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.933"
-        app:layout_constraintHorizontal_bias="0.501" />
+        app:layout_constraintVertical_bias="0.933" />
 
 </android.support.constraint.ConstraintLayout>

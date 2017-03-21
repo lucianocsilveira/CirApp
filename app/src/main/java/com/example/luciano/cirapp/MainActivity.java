@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login (View view){
-        Intent irParaLlista = new Intent(this,ListaDeItens.class);
-        startActivity(irParaLlista);
+        Intent irParaLista = new Intent(this,ListaDeItens.class);
+        startActivity(irParaLista);
     }
 }
