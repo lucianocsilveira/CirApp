@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login (View view){
+
+
         Intent irParaLista = new Intent(this,ListaDeItens.class);
         startActivity(irParaLista);
     }
