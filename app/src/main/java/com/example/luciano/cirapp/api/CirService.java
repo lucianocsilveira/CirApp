@@ -2,10 +2,16 @@ package com.example.luciano.cirapp.api;
 
 
 
+import com.example.luciano.cirapp.model.Anuncio;
+import com.example.luciano.cirapp.model.RespostaLogin;
 import com.example.luciano.cirapp.model.Usuario;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
@@ -18,4 +24,8 @@ public interface CirService {
 
     @POST("Contas/Registrar")
     Call<Integer> inserirUsuario(@Body Usuario user);
+
+    @GET("anuncios/1292")
+    Call<List<Anuncio>> getAllAnuncios();
+
 }

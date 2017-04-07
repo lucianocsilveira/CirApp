@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,15 +18,19 @@
         tools:layout_editor_absoluteY="-8dp" />
 
     <TextView
-        android:id="@+id/tvTituloAnuncio"
-        android:layout_width="247dp"
-        android:layout_height="31dp"
-        android:text="Título do Anúncio"
-        android:textColor="?android:attr/textColorHintInverse"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="2dp" />
+        android:id="@+id/tvDataHoraAnuncio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20 de Março 20:10"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="237dp"
+        tools:layout_editor_absoluteY="89dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="35dp"
+        android:layout_marginEnd="35dp" />
 
     <TextView
         android:id="@+id/tvLocalAnuncio"
@@ -36,17 +40,12 @@
         android:textColor="@color/colorAccent"
         android:textSize="12sp"
         tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="89dp" />
-
-    <TextView
-        android:id="@+id/tvDataHoraAnuncio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="20 de Março 20:10"
-        android:textColor="@color/colorAccent"
-        android:textSize="12sp"
-        tools:layout_editor_absoluteX="237dp"
-        tools:layout_editor_absoluteY="89dp" />
+        tools:layout_editor_absoluteY="89dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/imgItenAnuncio"
+        android:layout_toEndOf="@+id/imgItenAnuncio"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp" />
 
     <TextView
         android:id="@+id/tvPrecoAnuncio"
@@ -56,5 +55,24 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="64dp" />
-</android.support.constraint.ConstraintLayout>
+        tools:layout_editor_absoluteY="64dp"
+        android:layout_marginBottom="10dp"
+        android:layout_above="@+id/tvLocalAnuncio"
+        android:layout_alignLeft="@+id/tvLocalAnuncio"
+        android:layout_alignStart="@+id/tvLocalAnuncio" />
+
+    <TextView
+        android:id="@+id/tvTituloAnuncio"
+        android:layout_width="247dp"
+        android:layout_height="31dp"
+        android:text="Título do Anúncio"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="2dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/tvPrecoAnuncio"
+        android:layout_alignStart="@+id/tvPrecoAnuncio"
+        android:layout_marginTop="15dp" />
+</RelativeLayout>
