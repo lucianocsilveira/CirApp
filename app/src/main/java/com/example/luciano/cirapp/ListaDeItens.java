@@ -7,11 +7,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.luciano.cirapp.adapter.RecyclerAnuncioAdapter;
 import com.example.luciano.cirapp.api.CirService;
 import com.example.luciano.cirapp.model.Anuncio;
 import com.example.luciano.cirapp.util.ClickRecyclerView_Interface;
+import com.example.luciano.cirapp.util.RecyclerItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,9 +84,35 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
         adapter = new RecyclerAnuncioAdapter(this, anunciosListas, this);
         mRecyclerView.setAdapter(adapter);
 
+        mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getBaseContext(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getBaseContext(),anunciosListas.get(position).getTitulo(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                //position += 1;
+                Toast.makeText(getBaseContext(),"teste = "+ position, Toast.LENGTH_SHORT).show();
+                ChamarSelecActivity(anunciosListas.get(position).getTitulo());
+
+            }
+        }));
     }
+
     @Override
     public void onCustomClick(Object object) {
+
+    }
+
+    private void ChamarSelecActivity(String titulo_anuncio){
+
+        Intent intent = new Intent(this, DetalheAnuncio.class);
+        intent.putExtra("TITULO_ANUNCIO", titulo_anuncio);
+        startActivity(intent);
+
+        finish();
 
     }
     public void btnNovoAnuncio(View view){
