@@ -1,4 +1,4 @@
-package com.example.luciano.cirapp.service;
+package com.example.luciano.cirapp.api;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceGenerator {
 
-    public static final String API_BASE_URL = "http://cirapi.azurewebsites.net/api/";
+    public static final String API_BASE_URL = "http://cirapi.azurewebsites.net/";
 
     private static OkHttpClient httpClient = new OkHttpClient();
 
