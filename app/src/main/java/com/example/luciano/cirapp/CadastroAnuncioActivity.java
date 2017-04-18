@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class CadastroAnuncioActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -30,7 +31,7 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements Adapte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        Toast.makeText(getBaseContext(), ""+position, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -35,8 +35,8 @@ public class CadastroUsr extends AppCompatActivity {
 
         edtNome = (EditText) findViewById(R.id.edtNome);
         edtCpfCnpj = (EditText) findViewById(R.id.edtCpfCnpj);
-        edtUf = (EditText) findViewById(R.id.edtUf);
-        edtCidade = (EditText) findViewById(R.id.edtCidade);
+        //edtUf = (EditText) findViewById(R.id.edtUf);
+        //edtCidade = (EditText) findViewById(R.id.edtCidade);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtSenha = (EditText) findViewById(R.id.edtSenha);
         btnGravarUsr = (Button) findViewById(R.id.btnGravarUsr);
@@ -47,8 +47,8 @@ public class CadastroUsr extends AppCompatActivity {
 
                 String nome = edtNome.getText().toString();
                 String cpf_cnpj = edtCpfCnpj.getText().toString();
-                String cidade = edtCidade.getText().toString();
-                int cidade_id = Integer.parseInt(cidade);
+                //String cidade = edtCidade.getText().toString();
+                //int cidade_id = Integer.parseInt(cidade);
                 String email = edtEmail.getText().toString();
                 String senha = edtSenha.getText().toString();
 
@@ -58,7 +58,7 @@ public class CadastroUsr extends AppCompatActivity {
                         .build();
 
                 CirService service = retrofit.create(CirService.class);
-                Usuario u = new Usuario(nome,cpf_cnpj,cidade_id,email,senha);
+                Usuario u = new Usuario(nome,cpf_cnpj,11,email,senha);//Corrigir o id
 
                 Call<Integer> user = service.inserirUsuario(u);
                 user.enqueue(new Callback<Integer>() {
