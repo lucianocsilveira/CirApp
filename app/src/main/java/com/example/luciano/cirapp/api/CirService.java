@@ -3,6 +3,7 @@ package com.example.luciano.cirapp.api;
 
 
 import com.example.luciano.cirapp.model.Anuncio;
+import com.example.luciano.cirapp.model.CadAnuncio;
 import com.example.luciano.cirapp.model.RespostaLogin;
 import com.example.luciano.cirapp.model.Usuario;
 
@@ -25,6 +26,10 @@ public interface CirService {
 
     @POST("Contas/Registrar")
     Call<Integer> inserirUsuario(@Body Usuario user);
+
+    @POST
+    Call<Integer> inserirAnuncio(@Body CadAnuncio cadAnun);
+
 
     @GET("anuncios/1292")
     Call<List<Anuncio>> getAllAnuncios();
