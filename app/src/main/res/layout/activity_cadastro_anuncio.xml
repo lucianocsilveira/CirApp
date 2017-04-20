@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.227" />
 
     <EditText
-        android:id="@+id/txtTitulo"
+        android:id="@+id/edtTitulo"
         android:layout_width="319dp"
         android:layout_height="42dp"
         android:ems="10"
@@ -118,7 +118,7 @@
         app:layout_constraintVertical_bias="0.316" />
 
     <EditText
-        android:id="@+id/inputDescricao"
+        android:id="@+id/edtDesc"
         android:layout_width="318dp"
         android:layout_height="68dp"
         android:ems="10"
@@ -155,7 +155,7 @@
         app:layout_constraintVertical_bias="0.969" />
 
     <Button
-        android:id="@+id/btnSalvar"
+        android:id="@+id/btnSalvarAnuncio"
         android:layout_width="118dp"
         android:layout_height="48dp"
         android:text="Salvar"
@@ -171,22 +171,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="btnEdit"
-        android:text="EditTest"
+        android:text="Editar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.94"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03" />
-
-    <Button
-        android:id="@+id/btnDetalhe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btnDetalhes"
-        android:text="DetailsTest"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
