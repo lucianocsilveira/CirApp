@@ -13,10 +13,12 @@ public class DetalheAnuncio extends AppCompatActivity {
         setContentView(R.layout.activity_detalhe_anuncio);
 
         TextView titulo_anuncio = (TextView) findViewById(R.id.tv_titulo_anuncio);
+        TextView descricao_anuncio = (TextView) findViewById(R.id.txtAnuncioDescricao);
 
         if(getIntent().hasExtra("TITULO_ANUNCIO")){
             Bundle extras = getIntent().getExtras();
             titulo_anuncio.setText(extras.getString("TITULO_ANUNCIO"));
+           // descricao_anuncio.setText(extras.getString("DESCRICAO_ANUNCIO"));
         }
     }
 }

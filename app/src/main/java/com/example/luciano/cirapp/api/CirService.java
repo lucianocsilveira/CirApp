@@ -27,7 +27,7 @@ public interface CirService {
     @POST("Contas/Registrar")
     Call<Integer> inserirUsuario(@Body Usuario user);
 
-    @POST
+    @POST("anuncios")
     Call<Integer> inserirAnuncio(@Body CadAnuncio cadAnun);
 
 

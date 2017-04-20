@@ -61,6 +61,7 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
                 List<Anuncio> anuncioList = response.body();
 
                 for (Anuncio a : anuncioList){
+
                     Anuncio anuncio = new Anuncio();
                     anuncio.setTitulo(a.getTitulo().toString());
                     anuncio.setData(a.getData().toString());
@@ -110,6 +111,8 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
 
         Intent intent = new Intent(this, DetalheAnuncio.class);
         intent.putExtra("TITULO_ANUNCIO", titulo_anuncio);
+        //intent.putExtra("DESCRICAO_ANUNCIO", descricao);
+
         startActivity(intent);
 
         finish();

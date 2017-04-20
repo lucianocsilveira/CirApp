@@ -9,6 +9,7 @@ public class Anuncio {
     private String titulo;
     private String data;
     private String cidade;
+    private String descricao;
 
     public String getTitulo() {
         return titulo;
@@ -32,5 +33,13 @@ public class Anuncio {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

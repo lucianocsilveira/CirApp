@@ -58,7 +58,7 @@ public class CadastroUsr extends AppCompatActivity {
                         .build();
 
                 CirService service = retrofit.create(CirService.class);
-                Usuario u = new Usuario(nome,cpf_cnpj,11,email,senha);//Corrigir o id
+                Usuario u = new Usuario(nome,cpf_cnpj,1292,email,senha);//Corrigir o id
 
                 Call<Integer> user = service.inserirUsuario(u);
                 user.enqueue(new Callback<Integer>() {
