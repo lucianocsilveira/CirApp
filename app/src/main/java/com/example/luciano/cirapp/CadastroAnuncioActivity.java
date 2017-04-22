@@ -1,7 +1,13 @@
 package com.example.luciano.cirapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
@@ -9,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,6 +36,10 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements Adapte
     EditText edtDesc;
     Button btnSalvarAnuncio;
     String[] categoriaList = {"Categoria", "Plástico", "Vidro", "Borracha", "Papel", "Óleo", "Eletrônicos"};
+
+    int RESULT_LOAD_IMAGE = 1;
+    ImageView imgAnuncio;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,5 +113,34 @@ public class CadastroAnuncioActivity extends AppCompatActivity implements Adapte
     public void btnEdit(View view){
         Intent editar = new Intent(this, EditarAnuncio.class);
         startActivity(editar);
+    }
+
+    public void pegaImg (View v) {
+        Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+        i.setType("image/*");
+        startActivityForResult(i, RESULT_LOAD_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent){
+        if (requestCode == RESULT_LOAD_IMAGE){
+            if (resultCode == RESULT_OK){
+
+                Uri imagemSelecionada = intent.getData();
+                String[] colunas =  {MediaStore.Images.Media.DATA};
+
+                Cursor cursor  = getContentResolver().query(imagemSelecionada,colunas,null,null,null);
+                cursor.moveToFirst();
+
+                int indexColuna = cursor.getColumnIndex(colunas[0]);
+                String pathImg = cursor.getString(indexColuna);
+                cursor.close();
+
+                Bitmap bitmap = BitmapFactory.decodeFile(pathImg);
+                imgAnuncio = (ImageView) findViewById(R.id.imgAnuncio);
+                imgAnuncio.setImageBitmap(bitmap);
+            }
+
+        }
     }
 }
