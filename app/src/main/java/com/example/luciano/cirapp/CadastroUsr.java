@@ -5,12 +5,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.luciano.cirapp.api.CirService;
+import com.example.luciano.cirapp.model.CidadePorEstado;
 import com.example.luciano.cirapp.model.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,21 +29,24 @@ public class CadastroUsr extends AppCompatActivity {
 
     private EditText edtNome;
     private EditText edtCpfCnpj;
-    private EditText edtUf;
-    private EditText edtCidade;
     private EditText edtEmail;
     private EditText edtSenha;
     private Button btnGravarUsr;
+    Spinner spnEstado;
+    List<String> cidadesNoRealmList = new ArrayList<String>();
+    int categoriaPosition;
+    String[] estadoList = {"Estado","AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB",
+            "PE","PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_usr);
 
+        ArraySimplesEstado();
+
         edtNome = (EditText) findViewById(R.id.edtNome);
         edtCpfCnpj = (EditText) findViewById(R.id.edtCpfCnpj);
-        //edtUf = (EditText) findViewById(R.id.edtUf);
-        //edtCidade = (EditText) findViewById(R.id.edtCidade);
         edtEmail = (EditText) findViewById(R.id.edtEmail);
         edtSenha = (EditText) findViewById(R.id.edtSenha);
         btnGravarUsr = (Button) findViewById(R.id.btnGravarUsr);
@@ -84,6 +94,77 @@ public class CadastroUsr extends AppCompatActivity {
             }
         });
 
+    }
+    public void popularSpinnerCidades(){
+
+        spnEstado = (Spinner) findViewById(R.id.spnCidade);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, cidadesNoRealmList);
+        ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spnEstado.setAdapter(spinnerArrayAdapter);
+        spnEstado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String nome = parent.getSelectedItem().toString();
+                Toast.makeText(getBaseContext(), "Cidade Selecionada: " + nome, Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    public void pegarArrayCidades(String estado){
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://cirapi.azurewebsites.net/api/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        CirService service = retrofit.create(CirService.class);
+        Call<List<CidadePorEstado>> cidadesCall = service.getCidadePorEstado(estado);
+        cidadesCall.enqueue(new Callback<List<CidadePorEstado>>() {
+            @Override
+            public void onResponse(Call<List<CidadePorEstado>> call, Response<List<CidadePorEstado>> response) {
+
+                List<CidadePorEstado> cpe = response.body();
+
+                for(CidadePorEstado cid : cpe){
+                    cidadesNoRealmList.add(cid.getCidade1().toString());
+                    //cidadesNoRealmList.add(""+cid.getCidade_id());
+                    popularSpinnerCidades();
+                    Log.i("JONY", ""+cid.getCidade_id());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CidadePorEstado>> call, Throwable t) {
+
+            }
+        });
+    }
+    public void ArraySimplesEstado(){
+
+        spnEstado = (Spinner) findViewById(R.id.spnUf);
+        ArrayAdapter<String> spinCategAdapter = new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item,
+                estadoList);
+        spnEstado.setAdapter(spinCategAdapter);
+        spnEstado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                String nome = parent.getSelectedItem().toString();
+                Toast.makeText(getBaseContext(), nome, Toast.LENGTH_SHORT).show();
+                cidadesNoRealmList.clear();
+                pegarArrayCidades(nome);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 
