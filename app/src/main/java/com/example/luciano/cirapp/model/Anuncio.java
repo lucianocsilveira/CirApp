@@ -6,10 +6,20 @@ package com.example.luciano.cirapp.model;
 
 public class Anuncio {
 
+    private int id;
     private String titulo;
     private String data;
     private String cidade;
     private String descricao;
+    private String imagem;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -41,5 +51,13 @@ public class Anuncio {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

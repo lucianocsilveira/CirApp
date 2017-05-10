@@ -60,12 +60,17 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
             public void onResponse(Call<List<Anuncio>> call, Response<List<Anuncio>> response) {
                 List<Anuncio> anuncioList = response.body();
 
+                Log.i("JONY", anuncioList.get(2).getImagem());
+
                 for (Anuncio a : anuncioList){
 
                     Anuncio anuncio = new Anuncio();
                     anuncio.setTitulo(a.getTitulo().toString());
                     anuncio.setData(a.getData().toString());
                     anuncio.setCidade(a.getCidade().toString());
+                    //anuncio.setDescricao(a.getDescricao().toString());
+                    anuncio.setId(a.getId());
+                    //anuncio.setImagem(a.getImagem().toString());
 
                     anunciosListas.add(anuncio);
                     adapter.notifyDataSetChanged();//Eis o segredo
@@ -96,7 +101,7 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
             public void onItemLongClick(View view, int position) {
                 //position += 1;
                 Toast.makeText(getBaseContext(),"teste = "+ position, Toast.LENGTH_SHORT).show();
-                ChamarSelecActivity(anunciosListas.get(position).getTitulo());
+                ChamarSelecActivity(anunciosListas.get(position).getCidade());
 
             }
         }));
@@ -122,7 +127,6 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
         Intent novoAnuncio = new Intent(this, CadastroAnuncioActivity.class);
         startActivity(novoAnuncio);
     }
-
     public void abreMapa(View view){
         Intent abreMapa = new Intent(this, MapsActivity.class);
         startActivity(abreMapa);
