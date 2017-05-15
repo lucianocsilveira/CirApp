@@ -117,7 +117,10 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
             public void onItemLongClick(View view, int position) {
                 //position += 1;
                 Toast.makeText(getBaseContext(),"teste = "+ position, Toast.LENGTH_SHORT).show();
-                ChamarSelecActivity(anunciosListas.get(position).getCidade());
+                ChamarSelecActivity(anunciosListas.get(position).getTitulo(),
+                                    anunciosListas.get(position).getDescricao(),
+                                    anunciosListas.get(position).getImagem(),
+                                    anunciosListas.get(position).getCidade());
 
             }
         }));
@@ -128,11 +131,13 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
 
     }
 
-    private void ChamarSelecActivity(String titulo_anuncio){
+    private void ChamarSelecActivity(String titulo_anuncio, String descricao, String img, String cidade){
 
         Intent intent = new Intent(this, DetalheAnuncio.class);
         intent.putExtra("TITULO_ANUNCIO", titulo_anuncio);
-        //intent.putExtra("DESCRICAO_ANUNCIO", descricao);
+        intent.putExtra("DESCRICAO_ANUNCIO", descricao);
+        intent.putExtra("IMG_ANUNCIO", img);
+        intent.putExtra("CIDADE_ANUNCIO", cidade);
 
         startActivity(intent);
 
