@@ -1,10 +1,14 @@
 package com.example.luciano.cirapp.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.RecyclerView;
 
@@ -44,6 +48,12 @@ public class RecyclerAnuncioAdapter extends RecyclerView.Adapter<RecyclerAnuncio
         viewHolder.viewData.setText(anuncio.getData());
         viewHolder.viewCidade.setText(anuncio.getCidade());
 
+
+        String imageString = anuncio.getImagem();
+        byte[] decodedString = Base64.decode(imageString, Base64.DEFAULT);
+        Bitmap decodedImage = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        viewHolder.viewImage.setImageBitmap(decodedImage);
+
     }
 
     @Override
@@ -57,6 +67,7 @@ public class RecyclerAnuncioAdapter extends RecyclerView.Adapter<RecyclerAnuncio
         protected TextView viewTitulo;
         protected TextView viewData;
         protected TextView viewCidade;
+        protected ImageView viewImage;
 
         public RecyclerAnuncioViewHolder(final View itemView) {
             super(itemView);
@@ -64,6 +75,7 @@ public class RecyclerAnuncioAdapter extends RecyclerView.Adapter<RecyclerAnuncio
             viewTitulo = (TextView) itemView.findViewById(R.id.tvTituloAnuncio);
             viewData = (TextView) itemView.findViewById(R.id.tvDataHoraAnuncio);
             viewCidade = (TextView) itemView.findViewById(R.id.tvLocalAnuncio);
+            viewImage = (ImageView) itemView.findViewById(R.id.imgItenAnuncio);
 
             //Setup the click listener
             itemView.setOnClickListener(new View.OnClickListener() {

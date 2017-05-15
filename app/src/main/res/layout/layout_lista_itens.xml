@@ -9,14 +9,6 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <ImageView
-        android:id="@+id/imgItenAnuncio"
-        android:layout_width="110dp"
-        android:layout_height="112dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="-8dp" />
-
     <TextView
         android:id="@+id/tvDataHoraAnuncio"
         android:layout_width="wrap_content"
@@ -26,40 +18,12 @@
         android:textSize="12sp"
         tools:layout_editor_absoluteX="237dp"
         tools:layout_editor_absoluteY="89dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="28dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="35dp"
-        android:layout_marginEnd="35dp" />
-
-    <TextView
-        android:id="@+id/tvLocalAnuncio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Campina Grande, PB"
-        android:textColor="@color/colorAccent"
-        android:textSize="12sp"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="89dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/imgItenAnuncio"
-        android:layout_toEndOf="@+id/imgItenAnuncio"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp" />
-
-    <TextView
-        android:id="@+id/tvPrecoAnuncio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="R$100,00"
-        android:textColor="@color/colorAccent"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="64dp"
-        android:layout_marginBottom="10dp"
-        android:layout_above="@+id/tvLocalAnuncio"
-        android:layout_alignLeft="@+id/tvLocalAnuncio"
-        android:layout_alignStart="@+id/tvLocalAnuncio" />
+        android:layout_toRightOf="@+id/tvLocalAnuncio"
+        android:layout_toEndOf="@+id/tvLocalAnuncio" />
 
     <TextView
         android:id="@+id/tvTituloAnuncio"
@@ -71,8 +35,34 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="121dp"
         tools:layout_editor_absoluteY="2dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/tvPrecoAnuncio"
-        android:layout_alignStart="@+id/tvPrecoAnuncio"
-        android:layout_marginTop="15dp" />
+        android:layout_above="@+id/tvLocalAnuncio"
+        android:layout_alignLeft="@+id/tvLocalAnuncio"
+        android:layout_alignStart="@+id/tvLocalAnuncio" />
+
+    <TextView
+        android:id="@+id/tvLocalAnuncio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Campina Grande, PB"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="89dp"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_alignBaseline="@+id/tvDataHoraAnuncio"
+        android:layout_alignBottom="@+id/tvDataHoraAnuncio"
+        android:layout_toRightOf="@+id/imgItenAnuncio"
+        android:layout_toEndOf="@+id/imgItenAnuncio" />
+
+    <ImageView
+        android:id="@+id/imgItenAnuncio"
+        android:layout_width="110dp"
+        android:layout_height="112dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="-8dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

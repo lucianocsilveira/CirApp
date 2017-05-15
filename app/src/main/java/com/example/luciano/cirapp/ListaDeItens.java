@@ -1,10 +1,13 @@
 package com.example.luciano.cirapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -15,6 +18,7 @@ import com.example.luciano.cirapp.model.Anuncio;
 import com.example.luciano.cirapp.util.ClickRecyclerView_Interface;
 import com.example.luciano.cirapp.util.RecyclerItemClickListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,17 +64,29 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
             public void onResponse(Call<List<Anuncio>> call, Response<List<Anuncio>> response) {
                 List<Anuncio> anuncioList = response.body();
 
-                Log.i("JONY", anuncioList.get(2).getImagem());
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.icon);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte[] imageBytes = baos.toByteArray();
+                String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+                //Log.i("JONY", anuncioList.get(1).getImagem());
 
                 for (Anuncio a : anuncioList){
 
                     Anuncio anuncio = new Anuncio();
+
+                    if(a.getDescricao() == null || a.getImagem() == null){
+                        anuncio.setDescricao(null);
+                        anuncio.setImagem(imageString);
+                    }else{
+                        anuncio.setDescricao(a.getDescricao().toString());
+                        anuncio.setImagem(a.getImagem().toString());
+                    }
+
                     anuncio.setTitulo(a.getTitulo().toString());
                     anuncio.setData(a.getData().toString());
                     anuncio.setCidade(a.getCidade().toString());
-                    //anuncio.setDescricao(a.getDescricao().toString());
                     anuncio.setId(a.getId());
-                    //anuncio.setImagem(a.getImagem().toString());
 
                     anunciosListas.add(anuncio);
                     adapter.notifyDataSetChanged();//Eis o segredo
