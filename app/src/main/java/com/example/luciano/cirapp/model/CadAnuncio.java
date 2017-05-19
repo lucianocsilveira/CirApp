@@ -9,13 +9,15 @@ public class CadAnuncio {
     private String titulo;
     private String descricao;
     private int Usuario_id;
+    private String img;
     private int Categoria_id;
 
-    public CadAnuncio(String titulo, String descricao, int usuario_id, int categoria_id) {
-        this.titulo = titulo;
-        this.descricao = descricao;
-        Usuario_id = usuario_id;
+    public CadAnuncio(int categoria_id, String img, int usuario_id, String descricao, String titulo) {
         Categoria_id = categoria_id;
+        this.img = img;
+        Usuario_id = usuario_id;
+        this.descricao = descricao;
+        this.titulo = titulo;
     }
 
     public String getTitulo() {
@@ -40,6 +42,14 @@ public class CadAnuncio {
 
     public void setUsuario_id(int usuario_id) {
         Usuario_id = usuario_id;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getCategoria_id() {
