@@ -87,6 +87,7 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
                     anuncio.setData(a.getData().toString());
                     anuncio.setCidade(a.getCidade().toString());
                     anuncio.setId(a.getId());
+                    anuncio.setUsuariO_ID(a.getUsuariO_ID());
 
                     anunciosListas.add(anuncio);
                     adapter.notifyDataSetChanged();//Eis o segredo
@@ -108,19 +109,32 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
 
         mRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getBaseContext(), mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(getBaseContext(),anunciosListas.get(position).getTitulo(), Toast.LENGTH_SHORT).show();
-
+            public void onItemClick(View view, int position){
+                Toast.makeText(getBaseContext(),anunciosListas.get(position).getTitulo().toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(View view, int position) {
                 //position += 1;
-                Toast.makeText(getBaseContext(),"teste = "+ position, Toast.LENGTH_SHORT).show();
+                String id_usuario = Integer.toString(anunciosListas.get(position).getUsuariO_ID());
+                boolean editarAnuncio = false;
+
+                //TENHO QUE CRIAR UMA SHAREDPREFERENCES EM VEZ DESSES INTENTS PARA SALVAR OS IDS
+                Bundle extras = getIntent().getExtras();
+                Log.i("TESTE DO ID", extras.getString("USER_ID_LOGIN"));
+
+                if(extras.getString("USER_ID_LOGIN").equals(id_usuario)){
+                    editarAnuncio = true;
+                }else{
+                    Log.i("TESTE DO ID", "NEGATIVO");
+                }
+
+                //Toast.makeText(getBaseContext(),"teste = "+ position, Toast.LENGTH_SHORT).show();
                 ChamarSelecActivity(anunciosListas.get(position).getTitulo(),
                                     anunciosListas.get(position).getDescricao(),
                                     anunciosListas.get(position).getImagem(),
-                                    anunciosListas.get(position).getCidade());
+                                    anunciosListas.get(position).getCidade(),
+                                    editarAnuncio);
 
             }
         }));
@@ -131,13 +145,14 @@ public class ListaDeItens extends AppCompatActivity implements ClickRecyclerView
 
     }
 
-    private void ChamarSelecActivity(String titulo_anuncio, String descricao, String img, String cidade){
+    private void ChamarSelecActivity(String titulo_anuncio, String descricao, String img, String cidade, boolean user_id){
 
         Intent intent = new Intent(this, DetalheAnuncio.class);
         intent.putExtra("TITULO_ANUNCIO", titulo_anuncio);
         intent.putExtra("DESCRICAO_ANUNCIO", descricao);
         intent.putExtra("IMG_ANUNCIO", img);
         intent.putExtra("CIDADE_ANUNCIO", cidade);
+        intent.putExtra("USER_ID_BOOLEAN", user_id);
 
         startActivity(intent);
 

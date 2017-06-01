@@ -12,6 +12,7 @@ public class Anuncio {
     private String cidade;
     private String descricao;
     private String imagem;
+    private int usuariO_ID;
 
     public int getId() {
         return id;
@@ -59,5 +60,13 @@ public class Anuncio {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public int getUsuariO_ID() {
+        return usuariO_ID;
+    }
+
+    public void setUsuariO_ID(int usuariO_ID) {
+        this.usuariO_ID = usuariO_ID;
     }
 }

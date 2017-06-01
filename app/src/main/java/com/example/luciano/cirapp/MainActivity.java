@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<RespostaLogin> call, Response<RespostaLogin> response) {
 
                         if(response.isSuccessful()){
-                            startActivity(new Intent(getBaseContext(), ListaDeItens.class));
+
+                            Log.i("ID LOGIN", ""+response.body().getUsuario_id());
+                            chamarListadeItens(response.body().getUsuario_id());
+                            //startActivity(new Intent(getBaseContext(), ListaDeItens.class));
                         }else{
                             Toast.makeText(getBaseContext(), "Erro ao Logar", Toast.LENGTH_SHORT).show();
                         }
@@ -65,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public void cadastrarUsuario(View view){
@@ -74,10 +75,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(cadastroUsuario);
     }
 
-    public void login (View view){
+    private void chamarListadeItens(int userId){
 
+        Intent intent = new Intent(this, ListaDeItens.class);
+        String id_usuario = Integer.toString(userId);
+                            intent.putExtra("USER_ID_LOGIN", id_usuario);
+        startActivity(intent);
 
-        Intent irParaLista = new Intent(this,ListaDeItens.class);
-        startActivity(irParaLista);
+        finish();
+
     }
 }
