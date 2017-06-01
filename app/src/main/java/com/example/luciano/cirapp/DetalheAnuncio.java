@@ -20,17 +20,11 @@ public class DetalheAnuncio extends AppCompatActivity {
         TextView descricao_anuncio = (TextView) findViewById(R.id.txtAnuncioDescricao);
         TextView cidade_anuncio = (TextView) findViewById(R.id.txtAnuncioCidade);
 
-
-
-
-
             Bundle extras = getIntent().getExtras();
             titulo_anuncio.setText(extras.getString("TITULO_ANUNCIO"));
             descricao_anuncio.setText(extras.getString("DESCRICAO_ANUNCIO"));
             cidade_anuncio.setText(extras.getString("CIDADE_ANUNCIO"));
             decodeImg(extras.getString("IMG_ANUNCIO"));
-
-
 
     }
     public void decodeImg(String img) {
